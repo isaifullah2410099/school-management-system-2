@@ -116,7 +116,9 @@ CREATE TABLE `students` (
 INSERT INTO `students` (`student_id`, `username`, `password`, `fname`, `lname`, `grade`, `section`, `address`, `gender`, `email_address`, `date_of_birth`, `date_of_joined`, `parent_fname`, `parent_lname`, `parent_phone_number`) VALUES
 (1, 'john', '$2y$10$H1kAwLWHZx8LvsXAHvLV2eVyE0yeKMlckyd.p8j1Zu5TQjReP7r4i', 'John', 'Doe', 1, 1, 'California,  Los angeles', 'Male', 'abas55@ab.com', '2012-09-12', '2019-12-11 14:16:44', 'Doe', 'Mark', '09393'),
 (3, 'abas', '$2y$10$KLFheMWgpLfoiqMuW2LQxOPficlBiSIJ9.wE2qr5yJUbAQ.5VURoO', 'Abas', 'A.', 1, 1, 'Berlin', 'Male', 'abas@ab.com', '2002-12-03', '2021-12-01 14:16:51', 'dsf', 'dfds', '7979'),
-(4, 'jo', '$2y$10$pYyVlWg9jxkT0u/4LrCMS.ztMaOvgyol1hgNt.jqcFEqUC7yZLIYe', 'John3', 'Doe', 1, 1, 'California,  Los angeles', 'Female', 'jo@jo.com', '2013-06-13', '2022-09-10 13:48:49', 'Doe', 'Mark', '074932040');
+(4, 'jo', '$2y$10$pYyVlWg9jxkT0u/4rCMS.ztMaOvgyol1hgNt.jqcFEqUC7yZLIYe', 'John3', 'Doe', 1, 1, 'California,  Los angeles', 'Female', 'jo@jo.com', '2013-06-13', '2022-09-10 13:48:49', 'Doe', 'Mark', '074932040'),
+(5, 'lily', '$2y$10$bZb/f22AebpP2qLhM/1dwuLqy9qatC3zK3bqDpgvhVn/1VLNdwHJO', 'Lily', 'Brown', 2, 2, 'New York, NY', 'Female', 'lily@school.com', '2013-04-05', '2024-05-01 08:30:00', 'Mary', 'Brown', '0956781234'),
+(6, 'david', '$2y$10$pZ5WiGh8knPT0syGo8LMI.l.urDXCOi4ag7X.7r9s16rcyoXMvy2m', 'David', 'Clark', 1, 1, 'Chicago, IL', 'Male', 'david@school.com', '2014-08-01', '2024-05-02 09:15:00', 'Anna', 'Clark', '0987654321');
 
 -- --------------------------------------------------------
 
@@ -169,7 +171,8 @@ CREATE TABLE `teachers` (
 
 INSERT INTO `teachers` (`teacher_id`, `username`, `password`, `fname`, `lname`, `subjects`, `grades`, `section`, `address`, `employee_number`, `date_of_birth`, `phone_number`, `qualification`, `gender`, `email_address`, `date_of_joined`) VALUES
 (1, 'oliver', '$2y$10$FNAmnGXSWGIvRwW1j9iaDeomnHhku8a1LKlcO46I.6K/mEzQ2/Xi.', 'Oliver', 'Noah', '12', '12', '1', 'California,  Los angeles', 6546, '2022-09-12', '0945739', 'BSc', 'Female', 'ol@ab.com', '2022-09-09 05:23:45'),
-(5, 'abas', '$2y$10$cMSKcHEJcg3K6wbVcxcXGuksgU39i70aEQVKN7ZHrzqTH9oAc3y5m', 'Abas', 'A.', '1', '12', '12', 'Berlin', 1929, '2003-09-16', '09457396789', 'BSc,', 'Male', 'abas55@ab.com', '2022-09-09 06:42:31');
+(5, 'abas', '$2y$10$cMSKcHEJcg3K6wbVcxcXGuksgU39i70aEQVKN7ZHrzqTH9oAc3y5m', 'Abas', 'A.', '1', '12', '12', 'Berlin', 1929, '2003-09-16', '09457396789', 'BSc,', 'Male', 'abas55@ab.com', '2022-09-09 06:42:31'),
+(6, 'emma', '$2y$10$bZb/f22AebpP2qLhM/1dwuLqy9qatC3zK3bqDpgvhVn/1VLNdwHJO', 'Emma', 'Smith', 'English', '2', 'B', 'New York, NY', 7788, '1985-07-10', '0912345678', 'MEd', 'Female', 'emma@school.com', '2024-01-05 09:00:00');
 
 --
 -- Indexes for dumped tables

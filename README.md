@@ -2,67 +2,90 @@
 
 ## Run in a new Codespace
 
-The app requires PHP with the `pdo_mysql` extension and a MySQL server.
+This repository is a PHP school management application that requires PHP with PDO MySQL support and a MySQL database.
 
-### 1) Install PHP MySQL support
+## Recommended setup: Docker Compose
+
+This is the fastest reliable way to run the app in a new Codespace.
+
+1. Start the app:
+
+```bash
+docker compose up --build
+```
+
+2. Open the application in your browser:
+
+```text
+http://127.0.0.1:8081
+```
+
+3. Default login credentials:
+
+- Admin: `ibrahim` / `123`
+- Teacher: `emma` / `123`
+- Student: `lily` / `123`
+
+4. To stop and remove containers:
+
+```bash
+docker compose down
+```
+
+## Local Codespace setup (without Docker)
+
+If you prefer to run the app directly in the Codespace:
+
+1. Install required packages:
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y php-mysql
+sudo apt-get install -y mariadb-server php php-mysql php-cli php-curl php-xml php-mbstring
 ```
 
-Verify the driver is installed:
+2. Start MySQL:
 
 ```bash
-php -m | grep -E 'pdo|mysql'
+sudo service mysql start
 ```
 
-You should see `PDO` and `pdo_mysql`.
-
-### 2) Start MySQL in Docker
+3. Create the database and import schema:
 
 ```bash
-docker rm -f sms_mysql 2>/dev/null || true
-docker run --name sms_mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -e MYSQL_DATABASE=sms_db -p 3306:3306 -d mysql:8.0
-for i in $(seq 1 30); do
-  docker exec sms_mysql mysql -uroot -e "SELECT 1" &>/dev/null && break || sleep 2
-done
+mysql -uroot -e "CREATE DATABASE IF NOT EXISTS sms_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -uroot sms_db < school-management-system/sms_db.sql
 ```
 
-### 3) Import the database
-
-```bash
-docker exec -i sms_mysql mysql -uroot sms_db < school-management-system/sms_db.sql
-```
-
-### 4) Start the web app
-
-#### Option A: Docker PHP-Apache (recommended)
-
-```bash
-docker rm -f sms_php 2>/dev/null || true
-docker run --name sms_php -d -p 8080:80 -v "$PWD/school-management-system":/var/www/html php:8.3-apache bash -lc "docker-php-ext-install pdo_mysql && apache2-foreground"
-```
-
-Open:
-
-`http://127.0.0.1:8080`
-
-#### Option B: PHP built-in server
+4. Run the PHP built-in server:
 
 ```bash
 cd school-management-system
 php -S 0.0.0.0:8000
 ```
 
-Then open the forwarded port `8000` in Codespaces.
+5. Open the Codespace forwarded port `8000` in your browser.
 
-### 5) Login credentials
+## Verify PHP MySQL support
 
-- Username: `ibrahim`
-- Password: `123`
-- Role: `Admin`
+Run:
 
-### Troubleshooting
+```bash
+php -m | grep -E 'PDO|pdo_mysql'
+```
 
-If login fails with `Connection failed: could not find driver`, install `php-mysql` and restart the PHP server.
+You should see both `PDO` and `pdo_mysql`.
+
+## Troubleshooting
+
+- If you see `Connection failed: could not find driver`, install `php-mysql` and restart the PHP server.
+- If the Docker Compose database does not load, run:
+
+```bash
+docker compose down -v
+```
+
+Then start again with:
+
+```bash
+docker compose up --build
+```
